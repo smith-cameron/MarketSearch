@@ -104,6 +104,8 @@ hs_err_pid*
 ## ignoring target file
 target/
 
+application.properties
+
 ### macOS ###
 # General
 .DS_Store
