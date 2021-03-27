@@ -9,6 +9,6 @@ public class CasualController {
 	@GetMapping("/")
 	public String index() {
 	
-		return "index.jsp";//search.jsp?
+		return "landing.jsp";
 	}
 }
