@@ -10,20 +10,24 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.groupproj.marketsearch.models.User;
 import com.groupproj.marketsearch.services.UserService;
 import com.groupproj.marketsearch.validators.UserValidator;
+
 @Controller
+@RequestMapping("/marketsearch")
 public class LoginController {
+	//Controller handling login and registration traffic
 	@Autowired 
 	private UserService uService;
 	@Autowired
 	private UserValidator validator;
 	
-	
+	@RequestMapping("/marketsearch")
 	@GetMapping("/login")
 	public String loginReg(@ModelAttribute("user")User user) {
 		return "loginReg.jsp";
@@ -36,7 +40,7 @@ public class LoginController {
 		}
 		User newUser = this.uService.registerUser(user);
 		session.setAttribute("user_id", newUser.getId());
-		return "redirect:/dashboard";
+		return "redirect:/search";
 	}
 	@PostMapping("/login")
 	public String loginUser(@RequestParam("loginEmail")String email, @RequestParam("loginPassword")String password, RedirectAttributes redirectAttrs, HttpSession session) {
@@ -46,9 +50,9 @@ public class LoginController {
 		}
 		User user = this.uService.getByEmail(email);
 		session.setAttribute("user_id", user.getId());
-		return "redirect:/dashboard";
+		return "redirect:/search";
 	}
-	@GetMapping("/dashboard")
+	@GetMapping("/marketsearch")
 	public String dashboard(HttpSession session, Model viewModel) {
 		Long userId = (Long)session.getAttribute("user_id");
 		if(userId == null) {
