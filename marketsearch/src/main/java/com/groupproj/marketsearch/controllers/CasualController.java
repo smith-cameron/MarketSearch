@@ -11,4 +11,9 @@ public class CasualController {
 	
 		return "landing.jsp";
 	}
+	@GetMapping("/search")
+	public String casualSearch() {
+	
+		return "index.jsp";
+	}
 }
