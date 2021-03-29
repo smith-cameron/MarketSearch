@@ -16,4 +16,9 @@ public class CasualController {
 	
 		return "index.jsp";
 	}
+	@GetMapping("/login")
+	public String loginAndReg() {
+	
+		return "redirect:/marketsearch/login";
+	}
 }

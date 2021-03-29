@@ -27,7 +27,6 @@ public class LoginController {
 	@Autowired
 	private UserValidator validator;
 	
-	@RequestMapping("/marketsearch")
 	@GetMapping("/login")
 	public String loginReg(@ModelAttribute("user")User user) {
 		return "loginReg.jsp";
@@ -40,7 +39,7 @@ public class LoginController {
 		}
 		User newUser = this.uService.registerUser(user);
 		session.setAttribute("user_id", newUser.getId());
-		return "redirect:/search";
+		return "redirect:/marketsearch/success";
 	}
 	@PostMapping("/login")
 	public String loginUser(@RequestParam("loginEmail")String email, @RequestParam("loginPassword")String password, RedirectAttributes redirectAttrs, HttpSession session) {
@@ -50,9 +49,9 @@ public class LoginController {
 		}
 		User user = this.uService.getByEmail(email);
 		session.setAttribute("user_id", user.getId());
-		return "redirect:/search";
+		return "redirect:/marketsearch/success";
 	}
-	@GetMapping("/marketsearch")
+	@GetMapping("/success")
 	public String dashboard(HttpSession session, Model viewModel) {
 		Long userId = (Long)session.getAttribute("user_id");
 		if(userId == null) {
@@ -60,7 +59,7 @@ public class LoginController {
 		}
 		User currentUser = this.uService.getById(userId);
 		viewModel.addAttribute("user", currentUser);
-		return "search.jsp";
+		return "redirect:/marketsearch/search";
 	}
 	@GetMapping("/logOutUser")
 	public String logOut(HttpSession session) {

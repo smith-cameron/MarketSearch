@@ -44,7 +44,7 @@
 	<div class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
 		<p>Login and Registration</p>
 		<p class=animate-pulse>
-			<a href="/marketsearch/login" class="text-indigo-600 hover:text-red-700 ">
+			<a href="/login" class="text-indigo-600 hover:text-red-700 ">
 				click here &rarr; </a>
 		</p>
 	</div>

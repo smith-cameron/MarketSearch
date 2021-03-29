@@ -18,6 +18,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+<!-- Logout & Other Page Links-->
 	<div class="min-h-screen bg-green-400 py-6 flex flex-col justify-center sm:py-12">
 	<div class="relative py-3 sm:max-w-xl sm:mx-auto">
 	<div class="absolute inset-0 bg-gradient-to-r from-red-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
@@ -29,12 +30,12 @@
 			class="h-7 sm:h-10 animate-bounce " />
 	</div>
 	<div class=flex-auto>
-		<p class="text-4xl font-bold text-gray-900 ">Market Place</p>
+		<p class="text-4xl font-bold text-gray-900 ">Market Search</p>
 	</div>
 	</div>
 	<div class="divide-y divide-gray-200">
 	<div class="bg-white shadow p-4 flex">
-		<form method="post" action="/search">
+		<form method="post" action="/marketsearch/search">
 			<p>
 				Barcode: <input name="barcode" />
 				<button type="submit">search</button>
