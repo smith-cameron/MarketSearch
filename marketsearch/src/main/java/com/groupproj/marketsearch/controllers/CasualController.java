@@ -11,4 +11,14 @@ public class CasualController {
 	
 		return "landing.jsp";
 	}
+	@GetMapping("/search")
+	public String casualSearch() {
+	
+		return "index.jsp";
+	}
+	@GetMapping("/login")
+	public String loginAndReg() {
+	
+		return "redirect:/marketsearch/login";
+	}
 }

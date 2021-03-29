@@ -9,13 +9,14 @@
 <meta charset="UTF-8">
 <title>Market Search</title>
 <link rel="stylesheet" href="">
+<!-- Tailwind CSS Link and Styling -->
 </head>
 <body>
 	<div >
 		<h1 >Login or Register</h1>
 		<div id="regDiv">
 			<h2 class="subHead">Register</h2>
-			<form:form action="/register" method="post" modelAttribute="user">
+			<form:form action="/marketsearch/register" method="post" modelAttribute="user">
 					<form:errors class="validations" path="firstName"/>
 				<div class="formGroup">
 					<form:label path="firstName">First Name:</form:label>
@@ -47,7 +48,7 @@
 		<div >
 			<h2 >Login</h2>
 			<h3 >${loginError}</h3>
-			<form action="/login" method="post">
+			<form action="/marketsearch/login" method="post">
 				<div class="formGroup">
 					<label>Email:</label>
 					<input class="form-control" type="email" name="loginEmail"/>
