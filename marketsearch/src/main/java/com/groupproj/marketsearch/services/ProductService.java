@@ -2,18 +2,16 @@ package com.groupproj.marketsearch.services;
 
 import java.net.URI;
 
-import org.apache.http.client.HttpClient;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.groupproj.marketsearch.models.Product;
-//import com.groupproj.marketsearch.models.User;
-//import com.groupproj.marketsearch.repositories.ProductRepository;
-//import com.groupproj.marketsearch.repositories.UserRepository;
-//import com.mashape.unirest.http.ObjectMapper;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.request.HttpRequest;
+
+
 
 @Service
 public class ProductService {
@@ -31,12 +29,12 @@ public Product getAllProducts(@RequestBody String barcode) {
 					.method("GET", HttpRequest.BodyPublishers.noBody())
 					.build();
 			HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-			System.out.println(response.getBody()); //json object 
+					System.out.println(response.body()); //json object 
 			// create object mapper
 			ObjectMapper mapper = new ObjectMapper(); //jackson formatting
 			//read Json from reponsebody and map/convert to java POJO
 			//Product product =mapper.readValue(new File("data/sample.json"),Product.class);
-			Product product =mapper.readValue(response.getBody(),Product.class);
+					Product product =mapper.readValue(response.body(),Product.class);
 			//dat /sample-lite.json
 			System.out.println("title:= "+product.getTitle());
 			System.out.println(product.getFormattedBasePrice());

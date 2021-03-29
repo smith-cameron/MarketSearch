@@ -32,7 +32,7 @@ private Object iD;
 @JsonProperty("Merchant")
 private String merchant;
 @JsonProperty("ProductID")
-private Integer productID;
+private String productID;
 @JsonProperty("Quality")
 private String quality;
 @JsonProperty("Venue")
@@ -75,12 +75,12 @@ this.merchant = merchant;
 }
 
 @JsonProperty("ProductID")
-public Integer getProductID() {
+public String getProductID() {
 return productID;
 }
 
 @JsonProperty("ProductID")
-public void setProductID(Integer productID) {
+public void setProductID(String productID) {
 this.productID = productID;
 }
 

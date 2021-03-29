@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Product {
 
 @JsonProperty("ID")
-private Integer iD;
+private String iD;
 @JsonProperty("ASIN")
 private String aSIN;
 @JsonProperty("Title")
@@ -58,12 +58,12 @@ private Object raw;
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 @JsonProperty("ID")
-public Integer getID() {
+public String getID() {
 return iD;
 }
 
 @JsonProperty("ID")
-public void setID(Integer iD) {
+public void setID(String iD) {
 this.iD = iD;
 }
 
