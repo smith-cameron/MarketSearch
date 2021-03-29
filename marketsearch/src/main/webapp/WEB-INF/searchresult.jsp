@@ -21,12 +21,11 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:out value="${result.Title}" />
-				<tr>
-					<td><c:out value="${result.Title}" /></td>
-					<td><c:out value="${result.BasePrice}" /></td>
-					<td><c:out value="${result.BestPrice}" /></td>
-				</tr>
+		<tr>
+	        <td><c:out value="${results.title}" /></td>
+	        <td><c:out value="${results.basePrice}" /></td>
+	        <td><c:out value="${results.bestPrice}" /></td>
+	    </tr>
 			</tbody>
 	</table>
 </div>
