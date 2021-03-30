@@ -15,7 +15,7 @@
 	<table class="table table-dark">
 		<thead>
 			<tr>
-				<th>Title</th>
+				<th>Title One</th>
 				<th>BasePrice</th>
 				<th>BestPrice</th>
 			</tr>
