@@ -17,8 +17,9 @@ public class ProductService {
 
 	//public HttpResponse<String> getAllProducts() {
 public Product getAllProducts(@RequestBody String barcode) {
-		try {			
-			com.mashape.unirest.http.HttpResponse<String> response = Unirest.get("https://ebay-com.p.rapidapi.com/products/647865100010")
+		try {		
+			System.out.println(barcode);
+			com.mashape.unirest.http.HttpResponse<String> response = Unirest.get("https://ebay-com.p.rapidapi.com/products/"+barcode)
                     .header("x-rapidapi-key", "54781b218dmsh179859cdc308473p1c3856jsn1f21f1b2e12f")
                     .header("x-rapidapi-host", "ebay-com.p.rapidapi.com")
                     .asString();

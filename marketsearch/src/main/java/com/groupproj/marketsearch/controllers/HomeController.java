@@ -13,7 +13,6 @@ import com.groupproj.marketsearch.models.Product;
 import com.groupproj.marketsearch.services.ProductService;
 
 @Controller
-//@RequestMapping("/marketsearch")
 public class HomeController {
 	@Autowired
 	private ProductService pService;
