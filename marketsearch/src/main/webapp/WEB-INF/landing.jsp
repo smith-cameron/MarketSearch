@@ -68,10 +68,10 @@
           <div class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
             <p>Explore Marketplace without login?</p>
             <p class=animate-pulse>
-              <a href="/search" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a>
+              <a href="/marketsearch/search" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a>
                <p>Login and Registration</p>
             <p class=animate-pulse>
-              <a href="/login" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a>
+              <a href="/marketsearch/login" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a>
             </p>
           </div>
         </div>
