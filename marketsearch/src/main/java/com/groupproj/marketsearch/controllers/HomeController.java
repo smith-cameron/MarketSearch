@@ -13,22 +13,28 @@ import com.groupproj.marketsearch.models.Product;
 import com.groupproj.marketsearch.services.ProductService;
 
 @Controller
+@RequestMapping("/marketsearch")
 public class HomeController {
 	@Autowired
 	private ProductService pService;
+	@GetMapping("")
+	public String index() {
 	
-	@GetMapping("/marketsearch/search")
+		return "landing.jsp";
+	}
+	
+	@GetMapping("/search")
 	public String seachMP(Model viewModel) {
 
 		return "search.jsp";
 	}
-	@PostMapping("/marketsearch/search")
+	@PostMapping("/search")
 	public String seachproduct(@RequestParam("barcode") String barcode, Model viewModel) {
 		System.out.println(barcode);
 		this.pService.getAllProducts(barcode);
 		String barcodeinput  =barcode;
 		
-		return "redirect:/searchresult/"+barcodeinput;
+		return "redirect:/marketsearch/searchresult/"+barcodeinput;
 	}
 	
 	@GetMapping("/searchresult/{barcodeinput}")
@@ -40,21 +46,6 @@ public class HomeController {
 		return "searchresult.jsp";
 	}
 	
-//	@GetMapping("/search")
-//	public String formGet (@ModelAttribute("model") Accessory accessory, Model viewModel) {
-//		
-//		viewModel.addAttribute("cars", this.cService.getAllCars());
-//
-//		return "accessory/new.jsp";
-//	}
-//	@PostMapping("/search")
-//	public String formpost(@Valid @ModelAttribute("model") Accessory accessory, BindingResult result, Model viewModel,@RequestParam("item")String) {
-//		if(result.hasErrors()) {
-//			viewModel.addAttribute("cars", this.cService.getAllCars());
-//			return "accessory/new.jsp";
-//		}
-//		this.aService.create(accessory);
-//		return "redirect:/";
-//		
+
 
 }

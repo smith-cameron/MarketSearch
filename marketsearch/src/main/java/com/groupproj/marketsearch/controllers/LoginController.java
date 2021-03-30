@@ -59,11 +59,12 @@ public class LoginController {
 		}
 		User currentUser = this.uService.getById(userId);
 		viewModel.addAttribute("user", currentUser);
-		return "redirect:/marketsearch/search";
+		//return "redirect:/marketsearch/search";
+		return "SearchForLoginUser.jsp";
 	}
 	@GetMapping("/logOutUser")
 	public String logOut(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/marketsearch";
 	}
 }
