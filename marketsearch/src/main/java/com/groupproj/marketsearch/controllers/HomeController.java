@@ -13,17 +13,17 @@ import com.groupproj.marketsearch.models.Product;
 import com.groupproj.marketsearch.services.ProductService;
 
 @Controller
-//@RequestMapping("/marketsearch")
+@RequestMapping("/marketsearch")
 public class HomeController {
 	@Autowired
 	private ProductService pService;
 	
-	@GetMapping("/marketsearch/search")
+	@GetMapping("/search")
 	public String seachMP(Model viewModel) {
 
 		return "search.jsp";
 	}
-	@PostMapping("/marketsearch/search")
+	@PostMapping("/search")
 	public String seachproduct(@RequestParam("barcode") String barcode, Model viewModel) {
 		System.out.println(barcode);
 		this.pService.getAllProducts(barcode);
