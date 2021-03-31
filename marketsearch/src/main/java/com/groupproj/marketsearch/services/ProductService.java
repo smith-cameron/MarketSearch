@@ -38,5 +38,16 @@ public class ProductService {
 		System.out.println("this is out of try block");
 		return null; // TODO
 	}
-	
+	public String getTitleBP(Product product) {
+		String title = product.getTitle();
+		return title;
+	}
+	public Double getBasePriceBP(Product product) {
+		Double basePrice = product.getBasePrice();
+		return basePrice;
+	}
+	public Double getBestPriceBP(Product product) {
+		Double bestPrice = product.getBestPrice();
+		return bestPrice;
+	}
 }
