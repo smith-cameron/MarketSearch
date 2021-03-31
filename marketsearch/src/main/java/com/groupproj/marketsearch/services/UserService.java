@@ -6,6 +6,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.groupproj.marketsearch.models.Product;
 import com.groupproj.marketsearch.models.User;
 import com.groupproj.marketsearch.repositories.UserRepo;
 
@@ -43,5 +44,8 @@ public class UserService {
 	}
 	public User getByEmail(String email) {
 		return this.uRepo.findByEmail(email);
+	}
+	public List<Product> getUserWishlist(User user){
+		return user.getUsersWishlist();
 	}
 }

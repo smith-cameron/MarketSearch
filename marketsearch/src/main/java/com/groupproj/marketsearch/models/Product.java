@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
-
+//	Atributes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 @JsonProperty("ID")
 private String iD;
 @JsonProperty("ASIN")
@@ -56,6 +56,7 @@ private List<Offer> offers = null;
 private Object raw;
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
 
 @JsonProperty("ID")
 public String getID() {

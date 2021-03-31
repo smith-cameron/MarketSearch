@@ -9,10 +9,8 @@ import com.mashape.unirest.http.Unirest;
 
 @Service
 public class ProductService {
-
+	
 	// Get all product
-
-	// public HttpResponse<String> getAllProducts() {
 	public Product getAllProducts(@RequestBody String barcode) {
 		try {
 			System.out.println(barcode);
@@ -40,5 +38,5 @@ public class ProductService {
 		System.out.println("this is out of try block");
 		return null; // TODO
 	}
-
+	
 }

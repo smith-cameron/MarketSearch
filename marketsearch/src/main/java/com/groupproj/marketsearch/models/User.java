@@ -1,12 +1,17 @@
 package com.groupproj.marketsearch.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -54,13 +59,26 @@ public class User {
 		@Transient
 		private String confirmPassword;
 //		Table Realationships >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		
+		@ManyToMany(fetch = FetchType.LAZY)
+	    @JoinTable(
+	        name = "wishlist", 
+	        joinColumns = @JoinColumn(name = "user_id"), 
+	        inverseJoinColumns = @JoinColumn(name = "dbproduct_id")
+	    )
+	    private List<Product> usersWishes;
 		
 //		Constructor Bean >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		public User() {
 			
 		}
 //		Getter/Setter Pairs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		
+		public List<Product> getUsersWishlist() {
+			return this.usersWishes;
+		}
+		public void setUsersWishlist(List<Product> products) {
+			this.usersWishes = products;
+		}
 		public Long getId() {
 			return this.id;
 		}
