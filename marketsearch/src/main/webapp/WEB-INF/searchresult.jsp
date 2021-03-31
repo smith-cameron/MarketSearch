@@ -7,27 +7,53 @@
 <head>
 <meta charset="UTF-8">
 <title>Search Results</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-<div >
-		<hr>
-	<table class="table table-dark">
-		<thead>
-			<tr>
-				<th>Title One</th>
-				<th>BasePrice</th>
-				<th>BestPrice</th>
-			</tr>
-		</thead>
-		<tbody>
-		<tr>
-	        <td><c:out value="${results.title}" /></td>
-	        <td><c:out value="${results.basePrice}" /></td>
-	        <td><c:out value="${results.bestPrice}" /></td>
-	    </tr>
-			</tbody>
-	</table>
-</div>
+<div class="min-h-screen bg-green-400 py-6 flex flex-col justify-center sm:py-12">
+		<div class="w-full">
+			<div class="absolute inset-0 bg-gradient-to-r from-red-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+			<div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+				
+				<div class="flex content-evenly py-4">
+					<div class=flex-shink>
+						<img src="/img/storefront.png" class="h-7 sm:h-10" />
+					</div>
+					<div class=flex-auto>
+						<p class="text-4xl font-bold text-gray-900 ">Market Place</p>
+					</div>
+				</div>
+				
+						<h1 class="text-2xl text-center font-bold m-8">Search Result</h1>
+						<table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+							<thead>
+								<tr class="text-left border-b-2 border-gray-300">
+									<th class="px-4 py-3">Title</th>
+									<th class="px-4 py-3">BasePrice</th>
+									<th class="px-4 py-3">BestPrice</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="bg-gray-100 border-b border-gray-200">
+									<td class="px-4 py-3"><c:out value="${results.title}" /></td>
+									<td class="px-4 py-3"><c:out value="${results.basePrice}" /></td>
+									<td class="px-4 py-3"><c:out value="${results.bestPrice}" /></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<div
+							class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
+							<p>Login and Registration</p>
+							<p class=animate-pulse>
+								<a href="/login" class="text-indigo-600 hover:text-red-700 ">
+									click here &rarr; </a>
+							</p>
+						</div>
+				
+				
+			</div>
+		</div>
+	</div>
 </body>
 </html>
