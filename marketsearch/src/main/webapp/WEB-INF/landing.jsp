@@ -11,8 +11,7 @@
 <title>Landing Page</title>
 
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-	rel="stylesheet">
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/js/script.js">
 </head>
@@ -67,12 +66,9 @@
           </div>
           <div class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
             <p>Explore Marketplace without login?</p>
-            <p class=animate-pulse>
-              <a href="/marketsearch/search" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a>
+            <p class=animate-pulse><a href="/marketsearch/search" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a></p>
                <p>Login and Registration</p>
-            <p class=animate-pulse>
-              <a href="/marketsearch/login" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a>
-            </p>
+            <p class=animate-pulse><a href="/marketsearch/login" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a></p>
           </div>
         </div>
       </div>
