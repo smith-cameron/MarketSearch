@@ -3,11 +3,12 @@ package com.groupproj.marketsearch.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.groupproj.marketsearch.models.DBProduct;
 import com.groupproj.marketsearch.models.User;
 import com.groupproj.marketsearch.repositories.DBProductRepo;
-
+@Service
 public class DBProductService {
 	@Autowired
 	private DBProductRepo dbpRepo;
