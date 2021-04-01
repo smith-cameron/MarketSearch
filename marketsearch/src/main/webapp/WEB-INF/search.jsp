@@ -16,8 +16,7 @@
 </head>
 <body>
 	<!-- Logout & Other Page Links-->
-	<div
-		class="min-h-screen bg-green-400 py-6 flex flex-col justify-center sm:py-12">
+	<div class="min-h-screen bg-green-400 py-6 flex flex-col justify-center sm:py-12">
 		<div class="relative py-3 sm:max-w-xl sm:mx-auto">
 			<div
 				class="absolute inset-0 bg-gradient-to-r from-red-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
@@ -41,27 +40,14 @@
 									<button class="bg-red-400 hover:bg-red-300 rounded text-black p-4 pl-4 pr-4" type="submit">Search</button>
 								</p>
 							</form>
-
-						
-	
-				</div>
-				
-				
-				
-				
-				
+						</div>
 						<div
 							class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
 							<p>Login and Registration</p>
-							<p class=animate-pulse>
-								<a href="/marketsearch/login" class="text-indigo-600 hover:text-red-700 ">
-									click here &rarr; </a>
-							</p>
-				</div>
-
-
+							<p class=animate-pulse><a href="/marketsearch/login" class="text-indigo-600 hover:text-red-700 ">click here &rarr; </a></p>
 						</div>
-			
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
