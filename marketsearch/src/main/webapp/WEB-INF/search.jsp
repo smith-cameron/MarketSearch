@@ -37,7 +37,7 @@
 							<form method="post" action="/marketsearch/search">
 								<p class=" rounded shadow-xl border-2 p-2">
 									Barcode: <input name="barcode" />
-									<button class="bg-red-400 hover:bg-red-300 rounded text-black p-4 pl-4 pr-4" type="submit">Search</button>
+									<button class="float-right bg-red-400 hover:bg-red-300 rounded text-black p-2 pl-4 pr-4 m-4" type="submit">Search</button>
 								</p>
 							</form>
 						</div>
