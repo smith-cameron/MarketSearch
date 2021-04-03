@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.groupproj.marketsearch.models.DBProduct;
@@ -19,7 +18,6 @@ import com.groupproj.marketsearch.services.ProductService;
 import com.groupproj.marketsearch.services.UserService;
 
 @Controller
-@RequestMapping("/marketsearch")
 public class HomeController {
 	@Autowired
 	private ProductService pService;
@@ -28,36 +26,37 @@ public class HomeController {
 	@Autowired
 	private DBProductService dbpService;
 	
-	@GetMapping("")
+	@GetMapping("/")
 	public String index() {
+		return "redirect:/marketsearch";
+	}
+	@GetMapping("/marketsearch")
+	public String landing() {
 	
 		return "landing.jsp";
 	}
 	
-	@GetMapping("/search")
-	public String seachMP(Model viewModel) {
+	@GetMapping("/marketsearch/search")
+	public String searchMP(Model viewModel) {
 
 		return "search.jsp";
 	}
-	@PostMapping("/search")
-	public String seachproduct(@RequestParam("barcode") String barcode, Model viewModel) {
-		System.out.println(barcode);
-		this.pService.getAllProducts(barcode);
-		String barcodeinput  = barcode;
-		
-		return "redirect:/marketsearch/searchresult/"+barcodeinput;
+	@PostMapping("/marketsearch/search")
+	public String searchproduct(@RequestParam("barcode") String barcode, Model viewModel) {
+//		this.pService.getAllProducts(barcode);
+		return "redirect:/marketsearch/searchresult/"+barcode;
 	}
 	
-	@GetMapping("/searchresult/{barcodeinput}")
-	public String seachresult(@PathVariable("barcodeinput")String barcode,  Model viewModel) {
+	@GetMapping("/marketsearch/searchresult/{barcodeinput}")
+	public String searchresult(@PathVariable("barcodeinput")String barcode,  Model viewModel) {
 		// access the search
 		Product results = pService.getAllProducts(barcode);
 		viewModel.addAttribute("results", results);
-		System.out.println("results="+results.getTitle());
+//		System.out.println("results="+results.getTitle());
 		return "searchresult.jsp";
 	}
 	//Mapping for adding to wishlist
-	@GetMapping("wish/{barcode}")
+	@GetMapping("/marketsearch/wish/{barcode}")
 	public String wish(@PathVariable("barcode")String barcode, HttpSession session) {
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
@@ -72,7 +71,7 @@ public class HomeController {
 		return "redirect:/marketsearch/searchresult/"+barcode;
 	}
 	//Mapping for removing from wishlist
-	@GetMapping("unwish/{barcode}/{id}")
+	@GetMapping("/marketsearch/unwish/{barcode}/{id}")
 	public String unWish(@PathVariable("barcode")String barcode, @PathVariable("id")Long prodId, HttpSession session) {
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);

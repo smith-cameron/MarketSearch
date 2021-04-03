@@ -65,7 +65,7 @@ public class User {
 	        joinColumns = @JoinColumn(name = "user_id"), 
 	        inverseJoinColumns = @JoinColumn(name = "dbproduct_id")
 	    )
-	    private List<Product> usersWishes;
+	    private List<DBProduct> usersWishes;
 		
 //		Constructor Bean >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		public User() {
@@ -73,10 +73,10 @@ public class User {
 		}
 //		Getter/Setter Pairs >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		
-		public List<Product> getUsersWishlist() {
+		public List<DBProduct> getUsersWishlist() {
 			return this.usersWishes;
 		}
-		public void setUsersWishlist(List<Product> products) {
+		public void setUsersWishlist(List<DBProduct> products) {
 			this.usersWishes = products;
 		}
 		public Long getId() {
