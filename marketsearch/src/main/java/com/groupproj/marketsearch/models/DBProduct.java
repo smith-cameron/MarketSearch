@@ -3,6 +3,7 @@ package com.groupproj.marketsearch.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -43,7 +44,7 @@ public class DBProduct {
 	private Double bestPrice;
 	private String barcode;
 //	Table Realationships >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinTable(
 	    name = "wishlist", 
 	    joinColumns = @JoinColumn(name = "dbproduct_id"), 

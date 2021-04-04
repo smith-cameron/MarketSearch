@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.groupproj.marketsearch.models.DBProduct;
-import com.groupproj.marketsearch.models.User;
 import com.groupproj.marketsearch.repositories.DBProductRepo;
 @Service
 public class DBProductService {
@@ -29,23 +28,12 @@ public class DBProductService {
 		return this.dbpRepo.findById(id).orElse(null);
 	}
 	//Get a single DBProduct by barcode
-//	public DBProduct getDBProdByBarcode(String barcode) {
-//		DBProduct product= this.dbpRepo.findByBarcode(barcode);
-//		return product;
-//	}
+	public DBProduct getDBProdByBarcode(String barcode) {
+		DBProduct product= this.dbpRepo.findProductByBarcode(barcode);
+		return product;
+	}
 	public void deleteById(Long id) {
 		this.dbpRepo.deleteById(id);
 	}
-	//Add to wishlist
-	public void wish(DBProduct product, User user) {
-		List<User> prodDesired = product.getUsersWhoWant();
-		prodDesired.add(user);
-		this.dbpRepo.save(product);
-	}
-	//Remove from wishlist
-	public void unWish(DBProduct product, User user) {
-		List<User> prodDesired = product.getUsersWhoWant();
-		prodDesired.remove(user);
-		this.dbpRepo.save(product);
-	}
+	
 }
