@@ -1,5 +1,7 @@
 package com.groupproj.marketsearch.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,18 +41,38 @@ public class HomeController {
 	public String searchMP(Model viewModel) {
 		return "search.jsp";
 	}
+	//search mapping for casual user
 	@PostMapping("/marketsearch/search")
 	public String searchproduct(@RequestParam("barcode") String barcode, Model viewModel) {
 		return "redirect:/marketsearch/searchresult/"+barcode;
 	}
 	
-	@GetMapping("/marketsearch/searchresult/{barcodeinput}")
-	public String searchresult(@PathVariable("barcodeinput")String barcode,  Model viewModel) {
+	@GetMapping("/marketsearch/searchresult/{barcode}")
+	public String searchresult(@PathVariable("barcode")String barcode,  Model viewModel) {
 		// access the search
 		Product results = pService.getAllProducts(barcode);
 		viewModel.addAttribute("results", results);
-		System.out.println("results="+results.getTitle());
 		return "searchresult.jsp";
+	}
+	//search mapping for logged in user
+	@PostMapping("/marketsearch/searchFU")
+	public String searchproductFU(@RequestParam("barcode") String barcode, Model viewModel) {
+		return "redirect:/marketsearch/searchresultFU/"+barcode;
+	}
+	
+	@GetMapping("/marketsearch/searchresultFU/{barcode}")
+	public String searchresultFU(@PathVariable("barcode")String barcode,  Model viewModel,HttpSession session) {
+		Product results = pService.getAllProducts(barcode);
+		Long userId = (Long)session.getAttribute("user_id");
+		User currentUser = this.uService.getById(userId);
+		List<DBProduct> usersFavs = this.uService.getUserWishlist(currentUser);
+//		DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
+//		System.out.println(prodcheck.getTitle());
+		viewModel.addAttribute("results", results);
+		viewModel.addAttribute("barcode", barcode);
+		viewModel.addAttribute("currentUser", currentUser);
+		viewModel.addAttribute("usersFavs", usersFavs);
+		return "searchresultFU.jsp";
 	}
 	//Mapping for adding to wishlist
 	@GetMapping("/marketsearch/wish/{barcode}")
@@ -64,19 +86,20 @@ public class HomeController {
 		Double bestprice = this.pService.getBestPriceBP(results);
 		DBProduct prodToWish = this.dbpService.createEntry(title, baseprice, bestprice, barcode);
 		//Wish it
-		this.dbpService.wish(prodToWish, currentUser);
-		return "redirect:/marketsearch/searchresult/"+barcode;
+		this.uService.wish(prodToWish, currentUser);
+		return "redirect:/marketsearch/searchresultFU/"+barcode;
 	}
 	//Mapping for removing from wishlist
-	@GetMapping("/marketsearch/unwish/{barcode}/{id}")
-	public String unWish(@PathVariable("barcode")String barcode, @PathVariable("id")Long prodId, HttpSession session) {
+	@GetMapping("/marketsearch/unwish/{barcode}")
+	public String unWish(@PathVariable("barcode")String barcode, HttpSession session) {
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
+		System.out.println(currentUser.getEmail());
 		//Get the DBProduct to Unlike
-		//At this point there is a product object in the DB. How we get the id for the product is up to Front End. Possible ideas: form with hidden input/two path variables/Once added to wishlist can unly unwish from actual wishlist.jsp might be the simplest. Here i used double path variable just to avoid errors on page.
-		DBProduct prodToUnWish = this.dbpService.getById(prodId);
+		DBProduct prodToUnWish = this.dbpService.getDBProdByBarcode(barcode);
+		System.out.println(prodToUnWish.getTitle());
 		//UnWish
-		this.dbpService.unWish(prodToUnWish, currentUser);
-		return "redirect:/marketsearch/searchresult/"+barcode;
+		this.uService.unWish(prodToUnWish, currentUser);
+		return "redirect:/marketsearch/searchresultFU/"+barcode;
 	}
 }

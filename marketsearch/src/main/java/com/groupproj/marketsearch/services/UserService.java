@@ -48,4 +48,16 @@ public class UserService {
 	public List<DBProduct> getUserWishlist(User user){
 		return user.getUsersWishlist();
 	}
+	//Add to wishlist
+		public void wish(DBProduct product, User user) {
+			List<DBProduct> prodDesired = user.getUsersWishlist();
+			prodDesired.add(product);
+			this.uRepo.save(user);
+		}
+		//Remove from wishlist
+		public void unWish(DBProduct product, User user) {
+			List<DBProduct> prodDesired = user.getUsersWishlist();
+			prodDesired.remove(product);
+			this.uRepo.save(user);
+		}
 }
