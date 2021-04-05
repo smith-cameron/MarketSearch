@@ -101,8 +101,7 @@ public class HomeController {
 		if(allProd.contains(prodcheck)) {
 			this.uService.wish(prodcheck, currentUser);
 			return "redirect:/marketsearch/searchresultFU/"+barcode;
-		}
-		else {
+		}else {
 		Product results = pService.getAllProducts(barcode);
 		String title = this.pService.getTitleBP(results);
 		Double baseprice = this.pService.getBasePriceBP(results);
