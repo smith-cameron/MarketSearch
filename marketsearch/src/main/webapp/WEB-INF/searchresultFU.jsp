@@ -40,7 +40,7 @@
 							<td class="px-4 py-3"><c:out value="${results.bestPrice}" /></td>
 							<c:choose>
 								<c:when test="${usersFavs.contains(product)}">
-									<td>In Your WishList</td>
+									<td><a class="" href="/marketsearch/unwish/${barcode}">Remove</a></td>
 								</c:when>
 								<c:otherwise>
 									<td><a class="" href="/marketsearch/wish/${barcode}">ADD</a></td>

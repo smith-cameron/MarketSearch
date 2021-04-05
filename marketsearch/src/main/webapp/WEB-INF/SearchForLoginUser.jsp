@@ -37,7 +37,6 @@
 							</p>
 						</div>
 					</div>
-					<a href="">
 					<div class="max-w-md mx-auto">
 						<div class="flex content-evenly py-4">
 							<div class=flex-shink>
