@@ -22,6 +22,7 @@
 						<p class="text-4xl font-bold text-gray-900 ">Market Place</p>
 					</div>
 				</div>
+				<a href="/marketsearch/success">Return to user dashboard</a>
 				<h1 class="text-2xl text-center font-bold m-8">Search Result</h1>
 				<table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
 					<thead>
@@ -38,13 +39,13 @@
 							<td class="px-4 py-3"><c:out value="${results.basePrice}" /></td>
 							<td class="px-4 py-3"><c:out value="${results.bestPrice}" /></td>
 							<c:choose>
-							<c:when test="${}">
-							<td>In Your WishList</td>
-							</c:when>
-							<c:otherwise>
-							<td><a class="" href="/marketsearch/wish/${barcode}">ADD</a></td>
-							</c:otherwise>
-						</c:choose>
+								<c:when test="${usersFavs.contains(product)}">
+									<td><a class="" href="/marketsearch/unwish/${barcode}">Remove</a></td>
+								</c:when>
+								<c:otherwise>
+									<td><a class="" href="/marketsearch/wish/${barcode}">ADD</a></td>
+								</c:otherwise>
+							</c:choose>
 							
 						</tr>
 					</tbody>

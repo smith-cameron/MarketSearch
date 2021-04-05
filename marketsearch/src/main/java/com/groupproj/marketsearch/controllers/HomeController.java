@@ -56,22 +56,39 @@ public class HomeController {
 	}
 	//search mapping for logged in user
 	@PostMapping("/marketsearch/searchFU")
-	public String searchproductFU(@RequestParam("barcode") String barcode, Model viewModel) {
+	public String searchproductFU(@RequestParam("barcode") String barcode) {
 		return "redirect:/marketsearch/searchresultFU/"+barcode;
 	}
 	
 	@GetMapping("/marketsearch/searchresultFU/{barcode}")
 	public String searchresultFU(@PathVariable("barcode")String barcode,  Model viewModel,HttpSession session) {
+		try {
+			Product results = pService.getAllProducts(barcode);
+			Long userId = (Long)session.getAttribute("user_id");
+			User currentUser = this.uService.getById(userId);
+			List<DBProduct> usersFavs = this.uService.getUserWishlist(currentUser);
+			DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
+			System.out.println(prodcheck.getTitle());
+			viewModel.addAttribute("results", results);
+			viewModel.addAttribute("barcode", barcode);
+			viewModel.addAttribute("currentUser", currentUser);
+			viewModel.addAttribute("usersFavs", usersFavs);
+			viewModel.addAttribute("product", prodcheck);
+			return "searchresultFU.jsp";
+			
+		} catch (Exception e) {
+			System.out.println("not in db");
+		}
 		Product results = pService.getAllProducts(barcode);
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
 		List<DBProduct> usersFavs = this.uService.getUserWishlist(currentUser);
-//		DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
-//		System.out.println(prodcheck.getTitle());
+		DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
 		viewModel.addAttribute("results", results);
 		viewModel.addAttribute("barcode", barcode);
 		viewModel.addAttribute("currentUser", currentUser);
 		viewModel.addAttribute("usersFavs", usersFavs);
+		viewModel.addAttribute("product", prodcheck);
 		return "searchresultFU.jsp";
 	}
 	//Mapping for adding to wishlist
@@ -79,15 +96,20 @@ public class HomeController {
 	public String wish(@PathVariable("barcode")String barcode, HttpSession session) {
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
-		//Intitialize DBProduct object
+		List<DBProduct> allProd = this.dbpService.getAll();
+		DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
+		if(allProd.contains(prodcheck)) {
+			this.uService.wish(prodcheck, currentUser);
+			return "redirect:/marketsearch/searchresultFU/"+barcode;
+		}else {
 		Product results = pService.getAllProducts(barcode);
 		String title = this.pService.getTitleBP(results);
 		Double baseprice = this.pService.getBasePriceBP(results);
 		Double bestprice = this.pService.getBestPriceBP(results);
 		DBProduct prodToWish = this.dbpService.createEntry(title, baseprice, bestprice, barcode);
-		//Wish it
 		this.uService.wish(prodToWish, currentUser);
 		return "redirect:/marketsearch/searchresultFU/"+barcode;
+		}
 	}
 	//Mapping for removing from wishlist
 	@GetMapping("/marketsearch/unwish/{barcode}")
@@ -102,4 +124,8 @@ public class HomeController {
 		this.uService.unWish(prodToUnWish, currentUser);
 		return "redirect:/marketsearch/searchresultFU/"+barcode;
 	}
+//	@GetMapping("/marketplace/wishlist")
+//	public String wishlistByUser(HttpSession session) {
+//		
+//	}
 }
