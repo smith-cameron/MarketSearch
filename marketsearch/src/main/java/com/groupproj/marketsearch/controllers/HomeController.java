@@ -67,7 +67,7 @@ public class HomeController {
 			Long userId = (Long)session.getAttribute("user_id");
 			User currentUser = this.uService.getById(userId);
 			List<DBProduct> usersFavs = this.uService.getUserWishlist(currentUser);
-			DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
+			DBProduct prodcheck = this.dbpService.getDBProdBybarcode(barcode);
 			System.out.println(prodcheck.getTitle());
 			viewModel.addAttribute("results", results);
 			viewModel.addAttribute("barcode", barcode);
@@ -83,7 +83,7 @@ public class HomeController {
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
 		List<DBProduct> usersFavs = this.uService.getUserWishlist(currentUser);
-		DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
+		DBProduct prodcheck = this.dbpService.getDBProdBybarcode(barcode);
 		viewModel.addAttribute("results", results);
 		viewModel.addAttribute("barcode", barcode);
 		viewModel.addAttribute("currentUser", currentUser);
@@ -97,9 +97,9 @@ public class HomeController {
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
 		List<DBProduct> allProd = this.dbpService.getAll();
-		DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
+		DBProduct prodcheck = this.dbpService.getDBProdBybarcode(barcode);
 		if(allProd.contains(prodcheck)) {
-			this.uService.wish(prodcheck, currentUser);
+			this.dbpService.wish(prodcheck, currentUser);
 			return "redirect:/marketsearch/searchresultFU/"+barcode;
 		}else {
 		Product results = pService.getAllProducts(barcode);
@@ -107,7 +107,7 @@ public class HomeController {
 		Double baseprice = this.pService.getBasePriceBP(results);
 		Double bestprice = this.pService.getBestPriceBP(results);
 		DBProduct prodToWish = this.dbpService.createEntry(title, baseprice, bestprice, barcode);
-		this.uService.wish(prodToWish, currentUser);
+		this.dbpService.wish(prodToWish, currentUser);
 		return "redirect:/marketsearch/searchresultFU/"+barcode;
 		}
 	}
@@ -118,12 +118,13 @@ public class HomeController {
 		User currentUser = this.uService.getById(userId);
 		System.out.println(currentUser.getEmail());
 		//Get the DBProduct to Unlike
-		DBProduct prodToUnWish = this.dbpService.getDBProdByBarcode(barcode);
+		DBProduct prodToUnWish = this.dbpService.getDBProdBybarcode(barcode);
 		System.out.println(prodToUnWish.getTitle());
 		//UnWish
-		this.uService.unWish(prodToUnWish, currentUser);
+		this.dbpService.unWish(prodToUnWish, currentUser);
 		return "redirect:/marketsearch/searchresultFU/"+barcode;
 	}
+	//Mapping for User wishlist
 	@GetMapping("/marketplace/wishlist")
 	public String wishlistByUser(HttpSession session, Model viewModel) {
 		Long userId = (Long)session.getAttribute("user_id");

@@ -3,11 +3,12 @@ package com.groupproj.marketsearch.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.groupproj.marketsearch.models.DBProduct;
 import com.groupproj.marketsearch.models.User;
 import com.groupproj.marketsearch.repositories.DBProductRepo;
-
+@Service
 public class DBProductService {
 	@Autowired
 	private DBProductRepo dbpRepo;
@@ -28,10 +29,10 @@ public class DBProductService {
 		return this.dbpRepo.findById(id).orElse(null);
 	}
 	//Get a single DBProduct by barcode
-//	public DBProduct getDBProdByBarcode(String barcode) {
-//		DBProduct product= this.dbpRepo.findByBarcode(barcode);
-//		return product;
-//	}
+	public DBProduct getDBProdBybarcode(String barcode) {
+		DBProduct product= this.dbpRepo.getDBProductBybarcode(barcode);
+		return product;
+	}
 	public void deleteById(Long id) {
 		this.dbpRepo.deleteById(id);
 	}
