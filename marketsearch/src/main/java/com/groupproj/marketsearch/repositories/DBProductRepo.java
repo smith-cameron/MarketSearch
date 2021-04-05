@@ -10,5 +10,5 @@ import com.groupproj.marketsearch.models.DBProduct;
 public interface DBProductRepo extends CrudRepository<DBProduct, Long>{
 	List<DBProduct> findAll();
 	//@Query("SELECT p FROM bdproducts By p.barcode")
-	DBProduct findProductByBarcode(String barcode);
+	DBProduct findDBProductBybarcode(String barcode);
 }

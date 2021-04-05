@@ -37,6 +37,7 @@
 							</p>
 						</div>
 					</div>
+					<a href="">
 					<div class="max-w-md mx-auto">
 						<div class="flex content-evenly py-4">
 							<div class=flex-shink>
@@ -50,7 +51,7 @@
 						</div>
 						<div>
 							<div class="bg-white shadow p-4 flex">
-								<form method="post" action="/marketsearch/search">
+								<form method="post" action="/marketsearch/searchFU">
 									<p class=" rounded shadow-xl border-2 p-2">
 										Barcode: <input name="barcode" />
 										<button class="float-right bg-red-400 hover:bg-red-300 rounded text-black p-2 pl-4 pr-4 m-4" type="submit">

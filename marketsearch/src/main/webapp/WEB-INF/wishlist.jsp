@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Search Results</title>
+<title>Wishlist</title>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-
+<h1>HI! This is your wishlist</h1>
 
 </body>
 </html>

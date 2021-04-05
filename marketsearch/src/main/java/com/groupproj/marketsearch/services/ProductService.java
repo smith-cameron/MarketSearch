@@ -16,7 +16,7 @@ public class ProductService {
 			System.out.println(barcode);
 			com.mashape.unirest.http.HttpResponse<String> response = Unirest
 					.get("https://ebay-com.p.rapidapi.com/products/" + barcode)
-					.header("x-rapidapi-key", "54781b218dmsh179859cdc308473p1c3856jsn1f21f1b2e12f")
+					.header("x-rapidapi-key", "5f6d2d6ce7msh94ea67f8eb9f318p1f2ddbjsnb92025009f9f")
 					.header("x-rapidapi-host", "ebay-com.p.rapidapi.com").asString();
 			System.out.println(response.getBody());
 			ObjectMapper mapper = new ObjectMapper(); // jackson formatting
