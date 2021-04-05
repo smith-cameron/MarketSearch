@@ -29,7 +29,7 @@ public class DBProductService {
 	}
 	//Get a single DBProduct by barcode
 	public DBProduct getDBProdByBarcode(String barcode) {
-		DBProduct product= this.dbpRepo.findProductByBarcode(barcode);
+		DBProduct product= this.dbpRepo.findDBProductBybarcode(barcode);
 		return product;
 	}
 	public void deleteById(Long id) {
