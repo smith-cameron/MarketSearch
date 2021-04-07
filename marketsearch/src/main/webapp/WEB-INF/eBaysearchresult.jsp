@@ -38,22 +38,22 @@
 					</thead>
 					<tbody>
 
-						
+					<c:forEach items="${results}" var = "result" >
 						<tr class="bg-gray-100 border-b border-gray-200">
 							<td class="px-4 py-3"><c:out
-									value="${results.findItemsByKeywordsResponse[0].searchResult[0].item[0].title[0]}" /></td>
+									value="${result.findItemsByKeywordsResponse[0].searchResult[0].item[0].title[0]}" /></td>
 							<td class="px-4 py-3"><c:out
-									value="${results.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].convertedCurrentPrice[0].value}" /></td>
+									value="${result.findItemsByKeywordsResponse[0].searchResult[0].item[0].sellingStatus[0].convertedCurrentPrice[0].value}" /></td>
 
 						</tr>
 						<tr class="bg-gray-100 border-b border-gray-200">
 							<td class="px-4 py-3"><c:out
-									value="${results.findItemsByKeywordsResponse[1].searchResult[1].item[1].title[1]}" /></td>
+									value="${result.findItemsByKeywordsResponse[1].searchResult[1].item[1].title[1]}" /></td>
 							<td class="px-4 py-3"><c:out
-									value="${results.findItemsByKeywordsResponse[1].searchResult[1].item[1].sellingStatus[1].convertedCurrentPrice[1].value}" /></td>
+									value="${result.findItemsByKeywordsResponse[1].searchResult[1].item[1].sellingStatus[1].convertedCurrentPrice[1].value}" /></td>
 
 						</tr>
-
+						</c:forEach>
 					</tbody>
 				</table>
 						<div

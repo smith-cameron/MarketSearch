@@ -36,8 +36,8 @@
 					<tbody>
 						<tr class="bg-gray-100 border-b border-gray-200">
 							<td class="px-4 py-3"><c:out value="${results.title}" /></td>
-							<td class="px-4 py-3"><c:out value="${results.basePrice}" /></td>
-							<td class="px-4 py-3"><c:out value="${results.bestPrice}" /></td>
+							<td class="px-4 py-3">$<c:out value="${results.basePrice}" /></td>
+							<td class="px-4 py-3">$<c:out value="${results.bestPrice}" /></td>
 							<c:choose>
 								<c:when test="${usersFavs.contains(product)}">
 									<td><a class="" href="/marketsearch/unwish/${barcode}">Remove</a></td>

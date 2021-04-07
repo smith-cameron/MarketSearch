@@ -61,14 +61,13 @@ public class HomeController {
 	}
 	
 	@GetMapping("/marketsearch/searchresultFU/{barcode}")
-	public String searchresultFU(@PathVariable("barcode")String barcode,  Model viewModel,HttpSession session) {
+	public String searchresultFU(@PathVariable("barcode")String barcode,  Model viewModel, HttpSession session) {
 		try {
 			Product results = pService.getAllProducts(barcode);
 			Long userId = (Long)session.getAttribute("user_id");
 			User currentUser = this.uService.getById(userId);
 			List<DBProduct> usersFavs = this.uService.getUserWishlist(currentUser);
 			DBProduct prodcheck = this.dbpService.getDBProdByBarcode(barcode);
-			System.out.println(prodcheck.getTitle());
 			viewModel.addAttribute("results", results);
 			viewModel.addAttribute("barcode", barcode);
 			viewModel.addAttribute("currentUser", currentUser);
