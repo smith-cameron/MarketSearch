@@ -1,5 +1,7 @@
 package com.groupproj.marketsearch.controllers;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +36,7 @@ public class eBayController {
 	@GetMapping("/marketsearch/ebay/searchresult/{keyword}")
 	public String searchresult(@PathVariable("keyword")String keyword,  Model viewModel) {
 		// access the search
-		EbayProduct results = eService.getAllProducts(keyword);
+		ArrayList<EbayProduct> results = eService.getAllProducts(keyword);
 		//EbayProduct results = eService.getTop10Products(keyword);
 	   // System.out.println("+++eServerice.getallproducts= "+eService.getAllProducts(keyword));
 		viewModel.addAttribute("results", results);

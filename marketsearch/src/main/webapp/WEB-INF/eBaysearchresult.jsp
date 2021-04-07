@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>eBay Search Results</title>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-	rel="stylesheet">
 </head>
 <body>
 	<div
@@ -39,7 +38,7 @@
 					</thead>
 					<tbody>
 
-
+						
 						<tr class="bg-gray-100 border-b border-gray-200">
 							<td class="px-4 py-3"><c:out
 									value="${results.findItemsByKeywordsResponse[0].searchResult[0].item[0].title[0]}" /></td>
