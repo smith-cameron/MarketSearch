@@ -24,8 +24,14 @@
 					<div class ="flex justify-around items-center rounded-full shadow-xl pb-2">
 						<div>
 							<p class=animate-pulse>
-							<a href="https://www.ebay.com/deals" class="text-indigo-600 hover:text-red-700 ">
+							<a href="https://www.ebay.com/deals" class="text-red-500 hover:text-red-700 ">
 							Deals</a>
+							</p>
+						</div>
+						<div>
+							<p class=animate-pulse>
+							<a href="/marketsearch/wishlist" class="text-indigo-600 hover:text-red-700 ">
+							Wish-list</a>
 							</p>
 						</div>
 						<div>
