@@ -124,8 +124,13 @@ public class HomeController {
 		this.uService.unWish(prodToUnWish, currentUser);
 		return "redirect:/marketsearch/searchresultFU/"+barcode;
 	}
-//	@GetMapping("/marketplace/wishlist")
-//	public String wishlistByUser(HttpSession session) {
-//		
-//	}
+	@GetMapping("/marketplace/wishlist")
+	public String wishlistByUser(HttpSession session, Model viewModel) {
+		Long userId = (Long)session.getAttribute("user_id");
+		User currentUser = this.uService.getById(userId);
+		List<DBProduct> wishlist = this.uService.getUserWishlist(currentUser);
+		viewModel.addAttribute("wishlist", wishlist);
+		viewModel.addAttribute("currentUser", currentUser);
+		return "";
+	}
 }

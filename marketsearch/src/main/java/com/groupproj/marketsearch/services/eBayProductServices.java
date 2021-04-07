@@ -1,23 +1,19 @@
 package com.groupproj.marketsearch.services;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.groupproj.marketsearch.models.EbayProduct;
-import com.groupproj.marketsearch.models.Item;
-import com.groupproj.marketsearch.models.FindItemsByKeywordsResponse;
-import com.groupproj.marketsearch.models.SearchResult;
-import com.groupproj.marketsearch.models.Product;
 import com.mashape.unirest.http.Unirest;
 
 @Service
 public class eBayProductServices {
 
 	// Get all product
-		public EbayProduct getAllProducts(@RequestBody String keyword) {
+		public ArrayList<EbayProduct> getAllProducts(@RequestBody String keyword) {
 			//public EbayProduct getTop10Products(@RequestBody String keyword) {
 			try {
 				System.out.println("Keyword= "+keyword);
@@ -34,12 +30,16 @@ public class eBayProductServices {
 			//	System.out.println("response Body= "+response.getBody());
 				ObjectMapper mapper = new ObjectMapper(); // jackson formatting
 				// read Json from reponsebody and map/convert to java POJO
+				ArrayList<EbayProduct> allproducts = new ArrayList<EbayProduct>();
+				
 				EbayProduct ebayproduct = mapper.readValue(response.getBody(), EbayProduct.class);
 				
+				allproducts.add(0, ebayproduct);
+				System.out.println("allproducts2"+allproducts);
 			//System.out.println("responsebody35:= " + ebayproduct.getFindItemsByKeywordsResponse());
 			//System.out.println(ebayproduct.getFormattedBasePrice());
 //				System.out.println(ebayproduct.getBestPrice());
-				return (ebayproduct);
+				return (allproducts);
 //System.out.println(ebayproduct.getAdditionalProperties().get			// return (response.body());
 
 			} catch (Exception e) {
@@ -55,6 +55,7 @@ public class eBayProductServices {
 //			System.out.println("title52= "+title);
 //			return title;
 //		}
+		
 }
 
 	
