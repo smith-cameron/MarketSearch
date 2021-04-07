@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Landing Page</title>
+<title>eBAy Landing Page</title>
 
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -24,12 +24,12 @@
       <div class="max-w-md mx-auto">
         <div class="flex content-evenly"> 
         	<div class= flex-shink><img src="/img/storefront.png" class="h-7 sm:h-10 animate-bounce " /></div>
-         	<div class=flex-auto> <p class="text-4xl font-bold text-gray-900">Market Place</p></div>
+         	<div class=flex-auto> <p class="text-4xl font-bold text-gray-900">eBay Market Place</p></div>
          
         </div>
         <div class="divide-y divide-gray-200">
           <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-            <p>Online marketplace to search products</p>
+            <p>Online marketplace to search products for eBay</p>
             <ul class="list-disc space-y-2">
               <li class="flex items-start">
                 <span class="h-6 flex items-center sm:h-7">
@@ -67,8 +67,6 @@
           <div class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7">
             <p>Explore Marketplace without login?</p>
             <p class=animate-pulse><a href="/marketsearch/search" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a></p>
-                <p>eBay search</p>
-            <p class=animate-pulse><a href="http://localhost:8080/marketsearch/ebay/search" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a></p>
                <p>Login and Registration</p>
             <p class=animate-pulse><a href="/marketsearch/login" class="text-indigo-600 hover:text-red-700 "> click here &rarr; </a></p>
           </div>
